@@ -1,0 +1,553 @@
+.label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+.main > section,
+.main > div {
+  margin-bottom: 28px;
+}
+
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* PROGRESS */
+.progress-card {
+  background: linear-gradient(
+    145deg,
+    rgba(61, 220, 151, 0.08),
+    rgba(15, 23, 42, 0.8)
+  );
+  border: 1px solid rgba(61, 220, 151, 0.25);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  height: 12px;
+  background: var(--bg-main);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.progress-bar div {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+#progressPercent {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+
+/* TASKS */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+.task span {
+  flex: 1;
+}
+
+.task.done span {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+/* HABITS */
+.habit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+/* MOOD */
+.mood {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.mood button {
+  flex: 1;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 10px;
+    transition: all 0.2s ease
+}
+
+.mood button.active {
+  background: var(--accent);
+  color: #000;
+}
+.mood button:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* SCORE */
+.score-card {
+  background: linear-gradient(
+    145deg,
+    rgba(61, 220, 151, 0.1),
+    rgba(15, 23, 42, 0.9)
+  );
+  border: 1px solid rgba(61, 220, 151, 0.25);
+  text-align: center;
+}
+#dayScore {
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+
+.score-card h2 {
+  font-size: 2rem;
+  margin: 8px 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+}
+/* Habit row wrapper */
+.habit-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* cards  */
+
+#card1 {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+#card1 input {
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 10px 12px;
+  border-radius: 10px;
+  outline: none;
+  font-family: var(--font-primary);
+
+  width: 100%;
+
+}
+
+#card1 input:focus {
+  border: 2px solid var(--accent);
+}
+/* Unified Input Group for both Tasks and Habits */
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  width: 100%;
+}
+
+.input-group input {
+  flex: 1; 
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 12px 14px;
+  border-radius: 10px;
+  outline: none;
+  font-family: var(--font-primary);
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  border-color: var(--accent);
+}
+
+.input-group button {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  padding: 0 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.input-group button:hover {
+  opacity: 0.9;
+}
+
+ .card-section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+.card,
+.card-section {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover,
+.card-section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+
+.card-section input:focus {
+  border: 2px solid var(--accent);
+}
+
+#card4 {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+#card4 button {
+  flex: 1;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+#card4 button.active {
+  background: var(--accent);
+  color: #000;
+}
+
+/* TASK & HABIT ROW BASE */
+.task,
+.habit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.task span,
+.habit-item span {
+  flex: 1;
+}
+
+.task,
+.habit-item {
+  transition: all 0.2s ease;
+}
+
+.task:hover,
+.habit-item:hover {
+  border-color: var(--accent);
+  background: rgba(61, 220, 151, 0.05);
+}
+
+/* DONE STATE */
+.task.done,
+.habit-item.done {
+  border-color: var(--accent);
+  background: rgba(61, 220, 151, 0.15);
+}
+
+.task.done span,
+.habit-item.done span {
+  color: var(--accent);
+}
+
+.delete-btn:hover {
+  color: #ef4444;
+  text-decoration: underline;
+}
+/* ===== TODAY HABIT ROW ===== */
+
+.today-habit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-left: 4px solid #ef4444;
+  border-radius: 14px;
+  padding: 14px 18px;
+  transition: all 0.25s ease;
+}
+
+.today-habit-row.completed {
+  border-left: 4px solid var(--accent);
+  background: rgba(61, 220, 151, 0.08);
+   opacity: 0.85;
+}
+
+.today-habit-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.habit-name {
+  font-weight: 500;
+}
+
+.today-habit-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.today-habit-actions button {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.today-habit-actions button:hover {
+  border-color: var(--accent);
+  color: #000018;
+  
+}
+
+.done-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(61, 220, 151, 0.15);
+}
+.today-task-actions button:hover,
+.today-habit-actions button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* ===== TODAY TASK ROW ===== */
+
+.today-task-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-left: 4px solid #f59e0b; /* orange accent */
+  border-radius: 14px;
+  padding: 14px 18px;
+  transition: all 0.25s ease;
+}
+
+.today-task-row.completed {
+  border-left: 4px solid var(--accent);
+  background: rgba(61, 220, 151, 0.08);
+   opacity: 0.85;
+}
+
+.today-task-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.task-name {
+  font-weight: 500;
+}
+
+.today-task-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.today-task-row,
+.today-habit-row {
+  cursor: pointer;
+}
+
+.today-task-actions button,
+.today-habit-actions button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.done-btn {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.done-btn:hover {
+  background: var(--accent);
+  color: #000;
+}
+.skip-btn {
+  border-color: #f59e0b;
+  color: #f59e0b;
+}
+
+.skip-btn:hover {
+  background: #f59e0b;
+  color: #000;
+}
+.delete-btn {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.delete-btn:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1024px){
+
+.split{
+  grid-template-columns:1fr;
+}
+
+.habit-list,
+.task-list{
+  gap:8px;
+}
+
+.progress-card{
+  padding:18px;
+}
+
+}
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:700px){
+
+.main{
+  padding:18px;
+}
+
+.topbar h1{
+  font-size:1.4rem;
+}
+
+.progress-header{
+  font-size:.9rem;
+}
+
+#dayScore{
+  font-size:2rem;
+}
+
+.input-group{
+  flex-direction:column;
+}
+
+.input-group button{
+  width:100%;
+}
+
+.today-task-row,
+.today-habit-row{
+  flex-direction:column;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.today-task-actions,
+.today-habit-actions{
+  width:100%;
+  justify-content:flex-end;
+}
+
+}
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width:480px){
+
+.card,
+.card-section{
+  padding:16px;
+}
+
+.label{
+  font-size:.9rem;
+}
+
+.subtext{
+  font-size:.8rem;
+}
+
+.mood button{
+  padding:8px;
+  font-size:.8rem;
+}
+
+.today-task-actions button,
+.today-habit-actions button{
+  font-size:.7rem;
+  padding:4px 10px;
+}
+
+}

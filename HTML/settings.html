@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EconoME – Settings</title>
+
+    <link rel="stylesheet" href="../CSS/base.css" />
+    <link rel="stylesheet" href="../CSS/settings.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <div class="app">
+         <aside class="sidebar">
+        <div class="logo">Econo<span>ME</span></div>
+
+        <nav class="menu">
+          <a href="../HTML/dashboard.html"
+            ><i class="ri-home-4-line"></i><span>Dashboard</span></a
+          >
+          <a href="../HTML/expenses.html"
+            ><i class="ri-wallet-3-line"></i><span>Expenses</span></a
+          >
+          <a href="../HTML/habits.html"
+            ><i class="ri-loop-left-line"></i><span>Habits</span></a
+          >
+          <a href="../HTML/today.html"
+            ><i class="ri-checkbox-line"></i><span>Today</span></a
+          >
+          <a href="../HTML/reports.html"
+            ><i class="ri-bar-chart-line"></i><span>Reports</span></a
+          >
+        </nav>
+
+        <div class="menu-bottom">
+          <a class="active" href="../HTML/settings.html"
+            ><i class="ri-settings-3-line"></i><span>Settings</span></a
+          >
+        </div>
+      </aside>
+    <main class="main">
+    <div class="topbar">
+
+  <div class="topbar-left">
+    <button id="menuToggle" class="menu-toggle">
+      <i class="ri-menu-line"></i>
+    </button>
+  <div>
+    <h1>Settings</h1>
+    <p class="subtext">Manage your preferences and data</p>
+  </div>
+</div>
+</div>
+<div class="sidebar-overlay"></div>
+<section class="content">
+    <div class="settings-grid">
+
+  <!-- FINANCIAL -->
+  <div class="card">
+    <h3><i class="ri-money-rupee-circle-line"></i> Financial Profile</h3>
+    <p class="subtext">Manage your monthly income & limits</p>
+
+    <label>Monthly Salary (₹)</label>
+    <input type="number" id="incomeInputSetting" placeholder="Enter salary" />
+
+    <label>Monthly Budget (₹)</label>
+    <input type="number" id="budgetInput" placeholder="Enter budget" />
+
+    <button class="btn primary" onclick="saveProfileSettings()">Save Changes</button>
+  </div>
+
+  <!-- SAVINGS -->
+  <div class="card">
+    <h3><i class="ri-line-chart-line"></i> Savings Goal</h3>
+    <p class="subtext">Track how much you want to save</p>
+
+    <label>Monthly Savings Goal (₹)</label>
+    <input type="number" id="savingsGoalInput" placeholder="Enter goal" />
+
+    <button class="btn primary" onclick="saveSavingsGoal()">Save Goal</button>
+  </div>
+
+  <!-- DATA -->
+  <div class="card">
+    <h3><i class="ri-database-2-line"></i>Data Management</h3>
+    <p class="subtext">Backup or reset your data</p>
+
+    <button class="btn ghost" onclick="exportData()">Export Data (JSON)</button>
+    <button class="btn ghost" onclick="resetExpenses()">Reset Expenses</button>
+    <button class="btn danger" onclick="clearAllData()">Clear All Data</button>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="card">
+  <h3><i class="ri-information-line"></i> About EconoME</h3>
+  <p class="subtext">Version 1.0</p>
+
+  <div class="about-box">
+    <p><strong>EconoME</strong> is a personal finance and Habit tracker designed to help you manage expenses, savings, and daily habits efficiently.</p>
+    <p>Built by <em class="name">Abhijeet Chavan</em></p>
+  </div>
+</div>
+
+
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+</section>
+      </main>
+    </div>
+
+    <script src="../JavaScript/settings.js"></script>
+    <script src="../JavaScript/layout.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EconoME Dashboard</title>
+    <!-- <link rel="stylesheet" href="base.css" /> -->
+    <!-- <link rel="stylesheet" href="sidebar.css"> -->
+    <link rel="stylesheet" href="../CSS/dashboard.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="logo">Econo<span>ME</span></div>
+
+        <nav class="menu main-heading">
+          <a class="active"
+            ><i class="ri-home-4-line"></i><span>Dashboard</span></a
+          >
+          <a href="../HTML/expenses.html"
+            ><i class="ri-wallet-3-line"></i><span>Expenses</span></a
+          >
+          <a href="../HTML/habits.html"
+            ><i class="ri-loop-left-line"></i><span>Habits</span></a
+          >
+          <a href="../HTML/today.html"
+            ><i class="ri-checkbox-line"></i><span>Today</span></a
+          >
+          <a href="../HTML/reports.html"
+            ><i class="ri-bar-chart-line"></i><span>Reports</span></a
+          >
+        </nav>
+
+        <div class="menu-bottom">
+          <a href="../HTML/settings.html"
+            ><i class="ri-settings-3-line"></i><span>Settings</span></a
+          >
+        </div>
+      </aside>
+      <div class="sidebar-overlay"></div>
+
+      <!-- MAIN -->
+      <div class="main">
+        <!-- TOPBAR -->
+       <div class="topbar">
+  <div class="topbar-left">
+      <button id="menuToggle" class="menu-toggle">
+    <i class="ri-menu-line"></i>
+  </button>
+    <h1>Dashboard</h1>
+  </div>
+
+  <div class="topbar-right">
+    <h2 id="greetingText">Hello 👋</h2>
+
+    <button id="logoutBtn" class="logout-btn main-heading">Logout</button>
+  </div>
+</div>
+
+        <!-- DASHBOARD -->
+        <main class="dashboard">
+          <!-- STATS -->
+          <section class="stats">
+            <div class="card income-card">
+              <span>Monthly Income</span>
+              <h3 id="incomeAmount">₹0</h3>
+              <button class="edit-income">Edit</button>
+            </div>
+
+            <div class="card spent-card">
+              <span>This Month Spent</span>
+              <h3 id="monthly"></h3>
+
+              <div class="budget-progress">
+                <div class="budget-bar">
+                  <div class="budget-fill" id="budgetFill"></div>
+                </div>
+                <small id="budgetPercent"></small>
+              </div>
+            </div>
+
+            <div class="card">
+              <span>Savings</span>
+              <h3 id="savings" class="positive"></h3>
+            </div>
+
+            <div class="card">
+              <span class="card-label">Habit Streak</span>
+              <div class="streak-main">
+                <span class="streak-emoji">🔥</span>
+                <span class="streak-number" id="streakNumber">2</span>
+                <span class="streak-days">Days</span>
+              </div>
+
+              <div class="streak-rank" id="streakRank">Starter</div>
+            </div>
+          </section>
+
+          <!-- CONTENT -->
+          <h3 class="section-heading">Today Overview</h3>
+          <section class="content top-row">
+            <!-- HABITS -->
+            <div class="panel habits">
+              <h4 class="section-title">Today’s Habits</h4>
+              <p class="section-subtitle">
+                Small actions that move you forward
+              </p>
+
+              <ul class="habit-list">
+                <li class="habit-item done"></li>
+
+                <li class="habit-item"></li>
+
+                <li class="habit-item done"></li>
+
+                <li class="habit-item"></li>
+              </ul>
+            </div>
+            <!-- tasks today-tasks" -->
+            <div class="panel habits">
+              <h4 class="section-title">Today's Tasks</h4>
+              <p class="section-subtitle">Focus on what matters today</p>
+
+              <ul id="dashboardTodayTasks" class="habit-list"></ul>
+            </div>
+          </section>
+          <h3 class="section-heading">Financial Overview</h3>
+          <section class="expense-overview-row">
+            <div class="panel expense">
+              <div class="panel-header">
+                <h4>Expense Overview</h4>
+              </div>
+
+              <div class="category-bars" id="categoryBars"></div>
+            </div>
+          </section>
+          <section class="recent-expenses">
+            <div class="panel">
+              <div class="panel-header">
+                <h4>Recent Expenses</h4>
+                <a href="../HTML/expenses.html" class="see-all">See All →</a>
+              </div>
+
+              <div class="expense-list">
+                <ul id="expenseItems"></ul>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+
+      <!-- ADD EXPENSE DRAWER -->
+      <div class="overlay hidden"></div>
+      <!-- INCOME MODAL -->
+      <div class="bg"></div>
+      <aside class="income-modal hidden">
+        <h3>Set Monthly Income</h3>
+
+        <input
+          type="number"
+          id="incomeInput"
+          placeholder="₹ Enter monthly income"
+        />
+        <div class="income-modal-buttons">
+          <button class="save-income">Save Income</button>
+          <button class="cancel">Cancel</button>
+        </div>
+      </aside>
+
+      <aside class="expense-drawer hidden">
+        <div class="drawer-header">
+          <h3>Add Expense</h3>
+          <button class="close-drawer">&times;</button>
+        </div>
+
+        <form class="expense-form">
+          <label>Amount</label>
+          <input type="number" placeholder="₹ Enter amount" required />
+
+          <label>Category</label>
+          <div class="category-pills">
+            <button type="button" class="active">Food</button>
+            <button type="button">Travel</button>
+            <button type="button">Bills</button>
+            <button type="button">Shopping</button>
+            <button type="button">Other</button>
+          </div>
+
+          <label>Date</label>
+          <input type="date" />
+
+          <label>Note (optional)</label>
+          <input type="text" placeholder="Lunch, bus ticket…" />
+
+          <button type="submit" class="save-expense">Save Expense</button>
+        </form>
+      </aside>
+    </div>
+    <!-- <script src="expenses-core.js"></script> -->
+    <script  type="module" src="../JavaScript/dashboard.js"></script>
+  </body>
+</html>

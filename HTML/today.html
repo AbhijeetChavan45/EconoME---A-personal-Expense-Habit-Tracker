@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EconoME – Today</title>
+
+    <link rel="stylesheet" href="../CSS/base.css" />
+    <link rel="stylesheet" href="../CSS/today.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="logo">Econo<span>ME</span></div>
+
+        <nav class="menu">
+          <a href="../HTML/dashboard.html"
+            ><i class="ri-home-4-line"></i><span>Dashboard</span></a
+          >
+          <a href="../HTML/expenses.html"
+            ><i class="ri-wallet-3-line"></i><span>Expenses</span></a
+          >
+          <a href="../HTML/habits.html"
+            ><i class="ri-loop-left-line"></i><span>Habits</span></a
+          >
+          <a class="active"
+            ><i class="ri-checkbox-line"></i><span>Today</span></a
+          >
+          <a href="../HTML/reports.html"
+            ><i class="ri-bar-chart-line"></i><span>Reports</span></a
+          >
+        </nav>
+
+        <div class="menu-bottom">
+          <a href="../HTML/settings.html"
+            ><i class="ri-settings-3-line"></i><span>Settings</span></a
+          >
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main">
+        <!-- TOPBAR -->
+        <header class="topbar">
+          <div class="topbar-left">
+            <button id="menuToggle" class="menu-toggle">
+              <i class="ri-menu-line"></i>
+            </button>
+            <h1>Today</h1>
+          </div>
+          <div class="topbar-right">
+            <p id="liveDateTime" class="subtext"></p>
+          </div>
+        </header>
+          <div class="sidebar-overlay"></div>
+
+        <!-- DAY PROGRESS -->
+        <section class="card progress-card">
+          <div class="progress-header">
+            <span>Day Progress</span>
+            <span id="progressPercent">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div id="progressFill"></div>
+          </div>
+          <p id="progressMeta" class="subtext"></p>
+        </section>
+
+        <!-- MAIN FOCUS -->
+        <section class="card" id="card1">
+          <label for="mainFocus" class="label">Main Focus</label>
+          <p class="subtext">
+            Define the single most important outcome for today
+          </p>
+          <input id="mainFocus" placeholder="What must get done today?" />
+        </section>
+
+        <!-- SPLIT -->
+        <div class="split">
+          <!-- TASKS -->
+          <section class="card-section">
+            <div class="section-header">
+              <span>Tasks</span>
+              <span id="taskCount" class="subtext"></span>
+            </div>
+
+            <div id="taskList" class="task-list"></div>
+            <p id="emptyTasks" class="subtext">No tasks added</p>
+
+            <div class="input-group">
+              <input id="taskInput" placeholder="Add Task" />
+              <button id="addTaskBtn" type="button">Add</button>
+            </div>
+          </section>
+
+          <!-- HABITS -->
+          <section class="card-section">
+            <span class="label">Habits Check-in</span>
+
+            <div id="habitList" class="habit-list"></div>
+
+            <div class="input-group">
+              <input id="habitInput" placeholder="Add Habit" />
+              <button id="addHabitBtn" type="button">Add</button>
+            </div>
+          </section>
+        </div>
+
+        <!-- REVIEW -->
+        <section class="card" id="card4">
+          <label class="label">Daily Review</label>
+
+          <div class="mood">
+            <button data-mood="bad">Bad</button>
+            <button data-mood="ok">Okay</button>
+            <button data-mood="good">Good</button>
+          </div>
+
+          <textarea
+            id="reflection"
+            placeholder="One line about today "
+          ></textarea>
+        </section>
+
+        <!-- SCORE -->
+        <section class="card score-card">
+          <span class="label">Today Score</span>
+          <h2 id="dayScore">0 / 100</h2>
+          <p id="scoreText" class="subtext"></p>
+        </section>
+      </main>
+    </div>
+
+    <script src="../JavaScript/today.js"></script>
+    <script src="../JavaScript/layout.js"></script>
+  </body>
+</html>

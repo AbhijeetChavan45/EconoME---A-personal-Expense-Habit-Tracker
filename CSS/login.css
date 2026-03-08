@@ -1,0 +1,159 @@
+:root{
+--bg-main:#0E1111;
+--bg-surface:#121717;
+--text-primary:#EDEDED;
+--text-secondary:#9CA3AF;
+--accent:#3DDC97;
+--border:#1F2937;
+
+--font-primary:"Stack Sans Text","Inter",sans-serif;
+--font-secondary:"Inter Tight",sans-serif;
+}
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+/* BODY */
+
+body{
+background:var(--bg-main);
+color:var(--text-primary);
+font-family:var(--font-primary);
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+/* WRAPPER */
+
+.login-wrapper{
+width:100%;
+max-width:420px;
+}
+
+/* CONTAINER */
+
+.login-container{
+background:var(--bg-surface);
+border:1px solid var(--border);
+border-radius:18px;
+padding:36px;
+display:flex;
+flex-direction:column;
+gap:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* TITLE */
+
+.login-container h2{
+text-align:center;
+font-size:28px;
+}
+
+.login-container h2 span{
+color:var(--accent);
+}
+
+/* TEXT */
+
+.subtext{
+text-align:center;
+font-size:14px;
+color:var(--text-secondary);
+margin-bottom:10px;
+}
+
+/* INPUT */
+
+input{
+width:100%;
+padding:12px;
+background:var(--bg-main);
+border:1px solid var(--border);
+border-radius:10px;
+color:var(--text-primary);
+font-size:14px;
+}
+
+input:focus{
+border-color:var(--accent);
+outline:none;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+padding:12px;
+background:var(--accent);
+border:none;
+border-radius:10px;
+font-weight:600;
+cursor:pointer;
+}
+
+button:hover{
+opacity:0.9;
+}
+
+/* PASSWORD GROUP */
+
+.password-group{
+position:relative;
+}
+
+.password-group input{
+padding-right:40px;
+}
+
+#togglePassword{
+position:absolute;
+right:12px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+color:var(--text-secondary);
+}
+
+/* LINKS */
+
+.auth-link{
+text-align:center;
+font-size:14px;
+color:var(--text-secondary);
+}
+
+.auth-link a{
+color:var(--accent);
+text-decoration:none;
+}
+
+/* ERROR */
+
+#errorMsg{
+color:#ef4444;
+font-size:13px;
+text-align:center;
+}
+
+/* MOBILE */
+
+@media (max-width:480px){
+
+.login-container{
+padding:26px;
+}
+
+.login-container h2{
+font-size:24px;
+}
+
+}

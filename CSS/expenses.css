@@ -1,0 +1,657 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+  --bg-main: #0E1111;
+  --bg-surface: #121717;
+  --text-primary: #EDEDED;
+  --text-secondary: #9CA3AF;
+  --accent: #3DDC97;
+  --border: #1F2937;
+  --danger: #ef4444;
+  --font-primary: "Stack Sans Text", "Inter", sans-serif;
+  --font-secondary: "Inter Tight", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-family:var(--font-secondary);
+  overflow: hidden; 
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================================
+   2. APP LAYOUT & SIDEBAR
+   ========================================= */
+.app {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* .sidebar {
+  width: 220px;
+  height: 100vh;
+  background: #0c1010;
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+  flex-shrink: 0;
+} */
+/* 
+.sidebar .logo {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+
+.sidebar .logo span {
+  color: var(--accent);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.menu a.active {
+  color: var(--accent);
+}
+
+.menu a.active::before {
+  content: "";
+  width: 4px;
+  height: 16px;
+  background: var(--accent);
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.menu-bottom {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+.menu-bottom a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--text-secondary);
+  text-decoration: none;
+} */
+
+
+/* =========================================
+   3. MAIN CONTENT AREA
+   ========================================= */
+.main {
+  flex: 1;
+  padding: 24px 32px;
+  overflow-y: auto;
+  background: var(--bg-main);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.topbar h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* =========================================
+   4. CARDS & SUMMARY
+   ========================================= */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.expense-summary h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.expense-summary span#monthTotal {
+  color: var(--accent);
+  font-size: 1.8rem;
+  display: block;
+  margin-top: 8px;
+  font-weight: 700;
+}
+
+/* =========================================
+   5. FILTERS BAR
+   ========================================= */
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  background: var(--bg-surface);
+}
+
+.filters select, 
+.filters input {
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+}
+
+#clearFilters {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.2s;
+}
+
+#clearFilters:hover {
+  background: rgba(255,255,255,0.05);
+  color: var(--text-primary);
+}
+
+/* =========================================
+   6. EXPENSE LIST ITEMS
+   ========================================= */
+.expense-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+}
+
+.expense-item:hover {
+  border-color: rgba(61, 220, 151, 0.3);
+}
+
+.expense-info h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.expense-info p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.expense-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.amount {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.edit-expense, .delete-expense {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.edit-expense:hover { color: var(--accent); }
+.delete-expense:hover { color: var(--danger); }
+
+/* =========================================
+   7. SIDE DRAWER (ADD/EDIT FORM)
+   ========================================= */
+.expense-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px;
+  height: 100vh;
+  background: var(--bg-surface);
+  border-left: 1px solid var(--border);
+  padding: 32px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  
+  /* Initial state for animation */
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.expense-drawer.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.close-drawer {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.expense-form label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.expense-form input {
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 10px;
+  color: var(--text-primary);
+  outline: none;
+  width: 100%;
+}
+
+/* Category Pills inside Drawer */
+.category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.category-pills button {
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.category-pills button.active {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.save-expense {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+/* =========================================
+   8. MODALS & OVERLAY
+   ========================================= */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  transition: opacity 0.3s ease;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+}
+
+.modal-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 28px;
+  border-radius: 20px;
+  width: 340px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn.danger { background: var(--danger); color: white; }
+.btn.primary { background: var(--accent); color: #000; }
+
+.hidden {
+  display: none !important;
+}
+
+.topbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: var(--accent);
+  color: #000;
+  border: none;
+
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.topbar-btn:hover {
+  opacity: 0.9;
+}
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-secondary);
+}
+
+.empty-state i {
+  font-size: 36px;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.empty-state h3 {
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.empty-state p {
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+.month-section {
+  margin-bottom: 20px;
+}
+
+.month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+.month-header h3 {
+  font-size: 1.1rem;
+}
+
+.month-body.collapsed {
+  display: none;
+}
+
+.toggle-icon {
+  transition: transform 0.3s ease;
+}
+
+.toggle-icon.rotate {
+  transform: rotate(180deg);
+}
+
+.month-section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 28px; /* increase spacing */
+}
+
+.toggle-icon {
+  transition: transform 0.3s ease;
+}
+
+.month-body.collapsed + .toggle-icon {
+  transform: rotate(180deg);
+}
+.budget-progress {
+  margin-top: 14px;
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--bg-main);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+#budgetFillBar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+
+/* SUMMARY LAYOUT */
+
+.summary-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+
+.summary-main {
+  flex: 1;
+}
+
+.summary-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.summary-amount {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.summary-subtext {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+}
+
+/* PROGRESS */
+
+.progress-wrapper {
+  max-width: 420px;
+}
+
+.progress-track {
+  height: 8px;
+  background: var(--bg-main);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  transition: width 0.6s ease;
+  background: linear-gradient(90deg, #3DDC97, #22c55e);
+}
+
+
+
+.progress-text {
+  font-size: 0.85rem;
+  margin-top: 6px;
+  color: var(--text-secondary);
+}
+
+/* INSIGHTS */
+
+.summary-insights {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 0.95rem;
+  border-left: 1px solid var(--border);
+  padding-left: 40px;
+}
+
+
+.insight-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+
+.insight-row strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.subtext {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+/* =====================
+   SUMMARY RESPONSIVE
+===================== */
+
+@media (max-width:900px){
+
+.summary-container{
+  flex-direction:column;
+  gap:30px;
+}
+
+.summary-insights{
+  border-left:none;
+  border-top:1px solid var(--border);
+  padding-left:0;
+  padding-top:20px;
+  width:100%;
+}
+
+}
+
+/* =====================
+   MOBILE EXPENSE ITEMS
+===================== */
+
+@media (max-width:600px){
+
+.expense-item{
+  flex-direction:column;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.expense-actions{
+  width:100%;
+  justify-content:space-between;
+}
+
+.filters{
+  grid-template-columns:1fr;
+}
+
+.expense-drawer{
+  width:100%;
+}
+
+}
+
+

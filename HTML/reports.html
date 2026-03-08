@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EconoME - Reports</title>
+
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="../CSS/base.css" />
+  <link rel="stylesheet" href="../CSS/reports.css" />
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100..900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- pdf -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+<div class="app">
+    <!-- =======================
+         SIDEBAR
+    ======================== -->
+    <aside class="sidebar">
+      <div class="logo">Econo<span>ME</span></div>
+
+      <nav class="menu">
+        <a href="../HTML/dashboard.html">
+          <i class="ri-home-4-line"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="../HTML/expenses.html">
+          <i class="ri-wallet-3-line"></i>
+          <span>Expenses</span>
+        </a>
+
+        <a href="../HTML/habits.html">
+          <i class="ri-loop-left-line"></i>
+          <span>Habits</span>
+        </a>
+
+        <a href="../HTML/today.html">
+          <i class="ri-checkbox-line"></i>
+          <span>Today</span>
+        </a>
+
+        <a href="../HTML/reports.html" class="active">
+          <i class="ri-bar-chart-line"></i>
+          <span>Reports</span>
+        </a>
+      </nav>
+
+      <div class="menu-bottom">
+        <a href="../HTML/settings.html">
+          <i class="ri-settings-3-line"></i>
+          <span>Settings</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- =======================
+         MAIN
+    ======================== -->
+    <div class="main">
+
+  <!-- HEADER -->
+<header class="topbar reports-header">
+
+<div class="topbar-left">
+<button id="menuToggle" class="menu-toggle">
+<i class="ri-menu-line"></i>
+</button>
+
+<div>
+<h1>Reports</h1>
+<!-- <p class="subtext">Financial & productivity insights</p> -->
+</div>
+</div>
+
+<div class="topbar-right">
+
+<select id="monthSelector"></select>
+
+<button class="btn primary export-btn" id="exportPDFBtn">
+<i class="ri-file-download-line"></i>
+Download Report
+</button>
+
+
+</div>
+</header>
+<div class="sidebar-overlay"></div>
+
+  <!-- KPI ROW -->
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <h4>Total Income</h4>
+      <p id="kpiIncome">₹0</p>
+    </div>
+
+    <div class="kpi-card">
+      <h4>Total Expenses</h4>
+      <p id="kpiExpenses">₹0</p>
+    </div>
+
+    <div class="kpi-card">
+      <h4>Net Savings</h4>
+      <p id="kpiSavings">₹0</p>
+    </div>
+
+    <div class="kpi-card">
+      <h4>Productivity Score</h4>
+      <p id="kpiProductivity">0%</p>
+    </div>
+  </div>
+
+  <!-- HERO CHART -->
+  <div class="card hero-chart">
+    <h3>Monthly Spending Trend</h3>
+    <canvas id="spendingChart"></canvas>
+  </div>
+
+  <!-- ANALYTICS GRID -->
+  <div class="analytics-grid">
+    <div class="card">
+      <h3>Category Breakdown</h3>
+      <canvas id="categoryChart"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>Income vs Expense</h3>
+      <canvas id="incomeExpenseChart"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>Weekly Habit Consistency</h3>
+      <canvas id="habitChart"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>Task Completion</h3>
+      <canvas id="taskChart"></canvas>
+    </div>
+  </div>
+
+  <!-- SMART INSIGHTS -->
+<div class="card smart-panel">
+  <h3>Smart Insights</h3>
+  <ul id="smartInsightsList" class="insights-list"></ul>
+</div>
+
+
+</div>
+</div>
+  <script src="../JavaScript/reports.js"></script>
+  <script src="../JavaScript/layout.js"></script>
+</body>
+</html>

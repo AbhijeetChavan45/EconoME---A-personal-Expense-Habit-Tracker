@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EconoME - Your Personal Tracker</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../CSS/homepage.css">
+
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="main">
+
+<!-- NAVBAR -->
+<nav>
+
+<div class="nav-left">
+<div>Econo<span class="subhead-text">ME</span></div>
+</div>
+
+<button class="menu-toggle" id="menuToggle">
+<i class="ri-menu-line"></i>
+</button>
+
+<ul class="nav-right" id="navMenu">
+
+<li>
+<a href="../HTML/dashboard.html">Dashboard</a>
+</li>
+
+<li>
+<a href="../HTML/reports.html">Report</a>
+</li>
+
+<li>
+<a href="../HTML/login.html">Login</a>
+</li>
+
+</ul>
+
+</nav>
+
+
+<!-- HERO -->
+<main>
+
+<div class="header-head">
+<div>Track Your Expenses.</div>
+<div>Build Better Habits.</div>
+</div>
+
+<div class="header-para">
+“Because Every Rupee Matters.”
+</div>
+
+<a href="../HTML/login.html">
+<button class="header-btn">
+Get Started <i class="ri-arrow-right-line"></i>
+</button>
+</a>
+
+</main>
+
+</div>
+
+<script>
+
+const menuToggle = document.getElementById("menuToggle");
+const navMenu = document.getElementById("navMenu");
+
+menuToggle.addEventListener("click", () => {
+  navMenu.classList.toggle("show");
+});
+
+</script>
+
+</body>
+</html>

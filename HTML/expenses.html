@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EconoME – Expenses</title>
+
+  <link rel="stylesheet" href="../CSS/base.css">
+  <link rel="stylesheet" href="../CSS/expenses.css" />
+
+  <!-- Fonts -->
+   <link
+      href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+  <!-- Icons -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- SIDEBAR (SAME AS DASHBOARD) -->
+    <aside class="sidebar">
+      <div class="logo">Econo<span>ME</span></div>
+
+      <nav class="menu">
+        <a href="../HTML/dashboard.html"><i class="ri-home-4-line"></i><span>Dashboard</span></a>
+        <a class="active"><i class="ri-wallet-3-line"></i><span>Expenses</span></a>
+        <a href="../HTML/habits.html"><i class="ri-loop-left-line"></i><span>Habits</span></a>
+        <a href="../HTML/today.html"><i class="ri-checkbox-line"></i><span>Today</span></a>
+        <a href="../HTML/reports.html"><i class="ri-bar-chart-line"></i><span>Reports</span></a>
+      </nav>
+
+      <div class="menu-bottom">
+          <a href="../HTML/settings.html">
+          <i class="ri-settings-3-line"></i><span>Settings</span>
+        </a>
+      </div>
+    </aside>
+     <main class="main">
+      
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+  <div class="topbar-left">
+    <button id="menuToggle" class="menu-toggle">
+      <i class="ri-menu-line"></i>
+    </button>
+
+    <h1>Expenses</h1>
+  </div>
+
+  <div class="topbar-right">
+    <button id="addExpenseBtn" class="topbar-btn">
+      <i class="ri-add-line"></i> Add Expense
+    </button>
+  </div>
+
+</header>
+<div class="sidebar-overlay"></div>
+
+    <!-- EXPENSE SUMMARY -->
+     <div class="card expense-summary">
+
+  <div class="summary-container">
+
+    <!-- LEFT SIDE -->
+    <div class="summary-main">
+      <p class="summary-label">This Month</p>
+      <h2 id="monthTotal" class="summary-amount">₹0</h2>
+      <p id="expenseCount" class="summary-subtext">0 transactions</p>
+
+      <div class="progress-wrapper">
+        <div class="progress-track">
+          <div id="budgetFillBar" class="progress-fill"></div>
+        </div>
+        <p id="budgetPercentText" class="progress-text">
+          0% of income used
+        </p>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="summary-insights">
+      <div class="insight-row">
+        <span>Income</span>
+        <strong id="incomeText">₹0</strong>
+      </div>
+
+      <div class="insight-row">
+        <span>Remaining</span>
+        <strong id="remainingText">₹0</strong>
+      </div>
+
+      <div class="insight-row">
+        <span>Top Category</span>
+        <strong id="topCategoryText">—</strong>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+<!-- FILTERS -->
+<div class="card filters">
+  <select id="filterCategory">
+    <option value="all">All Categories</option>
+    <option>Food</option>
+    <option>Travel</option>
+    <option>Bills</option>
+    <option>Shopping</option>
+    <option>Other</option>
+  </select>
+
+  <input type="date" id="fromDate" />
+  <input type="date" id="toDate" />
+
+  <select id="sortBy">
+    <option value="latest">Latest</option>
+    <option value="highest">Highest Amount</option>
+  </select>
+
+  <button id="clearFilters">Clear</button>
+</div>
+    <!-- EXPENSE LIST -->
+    <section class="card expense-list">
+
+      <div class="expense-item">
+        <div class="expense-info">
+          <h4>Food</h4>
+          <p>Lunch at college • 24 Jan</p>
+        </div>
+
+        <div class="expense-actions">
+          <span class="amount">₹450</span>
+          <button class="link">Edit</button>
+          <button class="link danger">Delete</button>
+        </div>
+      </div>
+
+      <!-- More rows will be injected by JS -->
+    </section>
+  </main>
+  </div>
+<!-- ADD EXPENSE MODAL -->
+<div class="overlay hidden" id="modalOverlay"></div>
+
+<aside class="expense-drawer hidden" id="expenseDrawer">
+  <div class="drawer-header">
+    <h3 id="drawerTitle">Add Expense</h3>
+    <button class="close-drawer" id="closeDrawer">&times;</button>
+  </div>
+
+  <form class="expense-form" id="expenseForm">
+    <div class="form-group">
+      <label>Amount</label>
+      <input type="number" id="expAmount" placeholder="₹ Enter amount" required />
+    </div>
+
+    <div class="form-group">
+      <label>Category</label>
+      <div class="category-pills">
+        <button type="button" class="active">Food</button>
+        <button type="button">Travel</button>
+        <button type="button">Bills</button>
+        <button type="button">Shopping</button>
+        <button type="button">Other</button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Date</label>
+      <input type="date" id="expDate" required />
+    </div>
+
+    <div class="form-group">
+      <label>Note (optional)</label>
+      <input type="text" id="expNote" placeholder="Lunch, bus ticket…" />
+    </div>
+
+    <button type="submit" class="save-expense" id="saveBtn">Save Expense</button>
+  </form>
+</aside>
+<!-- DELETE CONFIRM MODAL -->
+<div class="modal hidden" id="deleteModal">
+  <div class="modal-box">
+    <h3>Delete Expense</h3>
+    <p>Are you sure you want to delete this expense? This action cannot be undone.</p>
+    <div class="modal-actions">
+      <button id="cancelDelete" class="btn">Cancel</button>
+      <button id="confirmDelete" class="btn danger">Delete</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script src="../JavaScript/expenses.js"></script>
+<script src="../JavaScript/layout.js"></script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EconoME – Habits</title>
+
+  <link rel="stylesheet" href="../CSS/base.css" />
+  <link rel="stylesheet" href="../CSS/habits.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Text:wght@200..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="app">
+
+  <!-- SIDEBAR (UNCHANGED) -->
+  <aside class="sidebar">
+    <div class="logo">Econo<span>ME</span></div>
+
+    <nav class="menu">
+      <a href="../HTML/dashboard.html"><i class="ri-home-4-line"></i><span>Dashboard</span></a>
+      <a href="../HTML/expenses.html"><i class="ri-wallet-3-line"></i><span>Expenses</span></a>
+      <a href="../HTML/habits.html" class="active"><i class="ri-loop-left-line"></i><span>Habits</span></a>
+      <a href="../HTML/today.html"><i class="ri-checkbox-line"></i><span>Today</span></a>
+      <a href="../HTML/reports.html"><i class="ri-bar-chart-line"></i><span>Reports</span></a>
+    </nav>
+
+    <div class="menu-bottom">
+      <a href="../HTML/settings.html"><i class="ri-settings-3-line"></i><span>Settings</span></a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+   <div class="topbar">
+
+  <div class="topbar-left">
+    <button id="menuToggle" class="menu-toggle">
+      <i class="ri-menu-line"></i>
+    </button>
+
+    <h1>Habits</h1>
+  </div>
+
+  <div class="topbar-right">
+    <button class="btn primary" id="addHabitBtn">
+      <i class="ri-add-line"></i> Add Habit
+    </button>
+  </div>
+
+</div>
+<div class="sidebar-overlay"></div>
+
+    <!-- SUMMARY -->
+    <section class="habits-summary">
+      <div class="card">
+        <h3>Today’s Progress</h3>
+        <p class="subtext">Completed <strong id="progress-count">0 / 0</strong></p>
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Today’s Thought</h3>
+        <p id="daily-quote" class="subtext"></p>
+      </div>
+
+      <div class="card">
+        <h3>Consistency Rank</h3>
+        <h2 id="rank-text">Starter</h2>
+      </div>
+    </section>
+
+    <!-- HABITS -->
+    <section class="habits-layout">
+      <div class="habits-left">
+        <h2 class="section-title">Today’s Focus</h2>
+      </div>
+
+      <div class="habits-right">
+        <h2 class="section-title">Weekly / Monthly</h2>
+      </div>
+    </section>
+    <!-- ADD HABIT MODAL -->
+<div class="modal-overlay" id="habitModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>Add Habit</h2>
+      <button class="close-btn" id="closeModal">&times;</button>
+    </div>
+
+    <form id="habitForm">
+      <div class="form-group">
+        <label>Habit Name</label>
+        <input type="text" id="habitName" required />
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+        <select id="habitCategory">
+          <option>Health</option>
+          <option>Career</option>
+          <option>Finance</option>
+          <option>Personal</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Frequency</label>
+        <select id="habitFrequency">
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Priority</label>
+        <select id="habitPriority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </div>
+
+      <button class="btn primary full">Add Habit</button>
+    </form>
+  </div>
+</div>
+<!-- delete modal  -->
+ <div class="modal-overlay" id="deleteModal">
+  <div class="modal">
+    <h2>Delete Habit</h2>
+    <p class="subtext">This action cannot be undone.</p>
+
+    <div style="display:flex; gap:12px; margin-top:20px;">
+      <button class="btn full" id="cancelDelete">Cancel</button>
+      <button class="btn primary full" id="confirmDelete">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONSISTENCY TIMELINE -->
+<section class="consistency">
+<h2 class="section-title">
+  Consistency · <span class="subtext" id="timelineRange"></span>
+  <span class="spacer"></span>
+  <div class="timeline-range">
+    <button class="range-btn active" data-range="7">7 days</button>
+    <button class="range-btn" data-range="14">14 days</button>
+  </div>
+</h2>
+
+
+  <div class="card">
+  <div class="timeline" id="consistencyTimeline"></div>
+  <div class="timeline-score subtext" id="timelineScore"></div>
+  <div class="timeline-detail hidden" id="timelineDetail"></div>
+
+
+  <div class="timeline-empty hidden" id="timelineEmpty">
+    <p>No activity yet</p>
+    <small>Complete a daily habit to build consistency 🌱</small>
+  </div>
+</div>
+
+</section>
+
+
+
+  </main>
+</div>
+
+<script src="../JavaScript/habits.js"></script>
+<script src="../JavaScript/layout.js"></script>
+</body>
+</html>
