@@ -23,5 +23,5 @@ A personal finance and Habit Track  management web application to track income a
 The goal of this project is to help users monitor their spending habits and improve financial awareness, and also improve their habits , and easily track them 
 
 ## Future Improvements
-- fully full stack application
+- fully full stack Web application
 - AI integration with application
